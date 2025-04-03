@@ -117,3 +117,39 @@ module.exports = { solution };
 
 // example 2: 
 
+/*Your task is to construct a function that accepts an integer n 
+and returns the integer with the same digits as n, but in reverse order. 
+You should implement your solution using a while loop.
+
+For instance, if the input is 12345, the output should be 54321.
+
+Keep in mind that n be a positive integer between 1 and 10 to the 8th 
+
+Do not use built-in functions that convert the integer to another data type, 
+such as a string, to reverse it. 
+Solve the problem purely using mathematical operations and loop constructs. 
+
+Note that when the result has leading zeros, you should consider only the integer value 
+(e.g., 1230 becomes 321 after the operation) */ 
+
+function solution(n) {
+    // TODO: implement the solution here
+    let reverse = 0; //create a variable to store the reversed number 
+    // create a while loop - while the integer is > 0, perform an operation to move the back number to the front 
+    while (n > 0){ 
+        let digit = n % 10 // get the tens place (last) number isolated 
+        //then we need to do something to multiply that by the number of places (for 100s place by 100)
+        //maybe we need to create a variable that stores this? 
+        //once we have the number in the right place, we add it to the previous number 
+        reverse = reverse * 10 + digit;
+        n = Math.floor(n / 10);
+    }
+
+    return reverse; //return the reversed number 
+}
+
+module.exports = { solution };
+
+//figured it out with minimal help but needed to look up how to get it to the correct place 
+
+// question 3: 
