@@ -197,3 +197,47 @@ function solution(n) {
 module.exports = { solution };
 
 //example 4: 
+
+/*You are tasked with writing a function that takes a positive integer n,
+as an input and returns the number of consecutive equal digits in the number. 
+Specifically, your function should identify pairs of digits in n that are equal 
+and consecutive and return the count of these pairs. Note that only pairs of two 
+consecutive equal digits should be counted, 
+and larger groups should be considered as multiple pairs. 
+
+For instance, if n = 113224, 
+it contains two groups of consecutive equal digits: 11 and 22. 
+Therefore, the output should be 2. For n = 444, 
+the output should also be 2, as there are two groups of 44 in this number.
+
+In cases where no consecutive equal digits are found, the function should return 0. 
+For example, if n = 13579 or n = 345672, 
+the output should be 0 as there are no groups of consecutive equal digits in these numbers.
+
+Keep in mind that n will be a positive integer ranging from 1 to 10^8, inclusive.
+
+Note: You are not permitted to convert the number into a string or any other 
+iterable structure for this task. You should work directly with the number.
+*/
+
+function solution(n) {
+    // TODO: implement
+    //create a variable to count the consecutive numbers - initialize to 0
+    let consecutiveCount = 0;
+    //create a variable to store the previous number 
+    let prevNumber = -1; 
+    //we will iterate over the number, and isolate the last number and store it in a variable, and then we will compare it to the previous number. If they === then we will increment (+) the consecutive count by 1
+    while (n > 0) {
+        let currentNum = n % 10; // set current num to the last place digit 
+        if (currentNum === prevNumber){
+            consecutiveCount += 1;
+        }
+    n = Math.floor(n/10); // get rid of last place digit 
+    prevNumber = currentNum;
+    }
+    return consecutiveCount; 
+}
+
+module.exports = { solution };
+
+//did the whole thing myself except I struggled with what to set prevNum to 
