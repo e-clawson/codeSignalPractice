@@ -162,7 +162,7 @@ keeping d digits after the decimal point.
 
 function solution(numbers) {
     // TODO: implement this function
-    let i = 0;
+    let i = 0; //don't need this? 
     // let elementAtGivenIndex = numbers[i];
     let result = [];
     let n = numbers.length;
@@ -181,3 +181,137 @@ module.exports = { solution };
 
 //almost did it on my own with the notes - needed a little help with the syntax for 
 //like 173 and accidentally started with Math.sqrt(num1/num2)
+
+//exercise 2: 
+
+/*
+You are provided with a list of n integers, where n ranges from 2 to 200, inclusive. 
+The task is to return a list of pairs, each containing an integer and its reverse counterpart.
+
+In this context, the reverse counterpart of a number is the number with its digits reversed. 
+For example, the reverse counterpart of 123 is 321.
+
+You must iterate through the list to find the reverse counterpart for each integer.
+If this reversed number exists in the list, create a pair with the original number 
+and its reverse counterpart. If not, skip it.
+
+Your output should be a list of pairs with the original integers and their reverse counterparts. 
+The integers in the given list will range from 10 to 9999, inclusive, 
+and each integer in the list is unique.
+
+Note: The reverse counterpart of a single digit number is the same number. 
+For numbers that result in leading zeros when reversed (e.g., 100 becomes 001, which is 1), 
+consider only the integer value (i.e., 1).
+ It's guaranteed that the original list will not contain integers with leading zeros.
+
+For example, for numbers = {12, 21, 34, 43, 56, 65}, 
+the output should be solution(numbers) = {{12, 21}, {21, 12}, {34, 43}, {43, 34}, {56, 65}, {65, 56}}.
+*/
+
+function solution(numbers) {
+    // TODO: implement solution here
+}
+
+module.exports = { solution };
+
+//this one was really frustrating. I got 90% of the way there but couldn't solve for the palindromic solution 
+// here was my solution assing 4/5 test cases: 
+
+function solution(numbers) {
+    // TODO: implement solution here
+    let newNumbers = [];
+    let numSet = new Set(numbers);
+
+    numbers.forEach(number => {
+        let n = number + "";
+        let reverse = Number(n.split("").reverse().join(""));
+        
+        for (i=0; i < numbers.length; i++){
+            let compNumber = numbers[i]
+            if (compNumber === reverse){ 
+               newNumbers.push([number, reverse])
+            } else {
+                continue; 
+            }
+        }
+    })
+    return(newNumbers);
+}
+
+module.exports = { solution };
+
+
+//here was codeSignal's solution. I would have never gotten here. 
+//I was annoyed it introduced sets with no explanation of what they were as I wasn't familiar 
+
+function solution(numbers) {
+    let newNumbers = [];
+    let numSet = new Set(numbers);
+
+    numbers.forEach(number => {
+        let reverse = parseInt(number.toString().split("").reverse().join(""), 10);
+        if (numSet.has(reverse)) {
+            newNumbers.push([number, reverse]);
+        }
+    });
+
+    return newNumbers;
+}
+
+module.exports = { solution };
+
+// example 3: 
+
+/* 
+
+You are given an array of n integers, where n ranges from 2 to 200, inclusive. 
+The elements in the array range from -200 to 200, inclusive. 
+Your task is to return an array where each element is the sum of a pair composed of an element and its 'opposite' element.
+
+By 'opposite', we mean that in an array of n elements, the first and last elements are paired, 
+the second and second-to-last elements are paired, and so on. If the array is of odd length, 
+the middle element pairs with itself.
+
+The method should handle both positive and negative integers 
+and be capable of dealing with an odd number of elements in the list.
+
+*/
+
+//this was their solution - I got some of it but not enough: 
+
+function solution(numbers) {
+    // TODO: Implement solution here
+    let result = [];
+    let n = numbers.length
+    for (let i = 0; i < Math.floor(n / 2); i++) {
+      result.push(numbers[i] + numbers[n - i - 1]);
+    }
+    if (n%2 === 1) {
+        result.push(numbers[Math.floor(n/2)] * 2);
+    }
+      return result;
+  }
+  
+  module.exports = { solution };
+
+//this was where I got to: 
+
+
+function solution(numbers) {
+    // TODO: Implement solution here
+    let result = [];
+      let n = Math.floor(numbers.length / 2);
+      let o = numbers.length - 1;
+      let p = n % 2
+      for (let i = 0; i < n; i++) {
+          result.push(numbers[i] + numbers[n - i - 1]);
+          if (p === 1) {
+            result.push(numbers[i]+ numbers[i])
+          }
+      }
+      return result;
+  }
+  
+  module.exports = { solution };
+
+  
