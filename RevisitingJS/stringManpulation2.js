@@ -247,3 +247,35 @@ processAstronautData(astronautData);
 //also fairly straightforward though I am sure there would be a better solution with fewer variables being declared 
 
 // example 5: 
+
+/* In our final task, you will process space exploration crew members' data for command assignments! 
+You have been given a string of crew details separated by semicolons. 
+Your mission is to split, clean, and display each member's information correctly. 
+Let's get those crew details ready for launch! */
+
+// Space exploration crew members' data, containing their names, missions, and roles
+let crewData = "Neil,Armstrong,Apollo 11,C;Buzz,Aldrin,Apollo 11,P;Michael,Collins,Apollo 11,CM";
+
+// TODO: Split the crewData string into a list of individual crew member information using the appropriate delimiter
+
+// TODO: Iterate over the list of crew member data
+
+    // TODO: For each member, split their data string using commas as delimiters
+    
+    // TODO: Print the crew member's details in a formatted string
+
+// Expected output:
+// Neil Armstrong Apollo 11 C
+// Buzz Aldrin Apollo 11 P
+// Michael Collins Apollo 11 CM
+
+let individualCrewData = crewData.split(";");
+
+individualCrewData.forEach( crew => {
+    let individual = crew.split(",");
+    console.log(individual[0], individual[1], individual[2], individual[3]);
+    
+})
+
+//while this works i'm hardcoding the console.log which wouldn't work for a lot of other test cases 
+//if we added additional data for the current individuals or if we added other individuals who had no mission yet for example 
