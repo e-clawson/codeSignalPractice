@@ -108,6 +108,7 @@ function solution(n) {
         return 0; //if all even, return 0 
     }
     return odd_digits;  
+
 }
 
 module.exports = { solution };
@@ -153,3 +154,46 @@ module.exports = { solution };
 //figured it out with minimal help but needed to look up how to get it to the correct place 
 
 // question 3: 
+
+/*Your task is to implement a function that duplicates 
+every digit in a given non-negative integer number, n. 
+
+for example, if n = 1234, the function should return 11223344
+
+To prevent possible integer overflow, 
+it is guaranteed that n will be a non-negative integer that does not exceed 10 ^4 
+
+Solve this task without converting n into a string or performing any other type of casting. 
+Your job is to work strictly with integer operations.
+
+Keynote:
+Focus on the essence of the problem, 
+which is processing each digit of the number independently while maintaining the digit order. 
+There is no need to look for mathematical patterns or clever simplifications; 
+plain and straightforward processing will suffice. 
+Utilize the toolbox of basic programming skills: 
+loops, conditions, and mathematical operations. Good luck!
+*/
+
+function solution(n) {
+    // TODO: Implement the solution
+    // create a variable to store the new number, initialize to 0
+    let doubles = 0;
+    let multiplier = 1;// keeps track of the position 
+    //create a while loop to go through the numbers - you will need this in the loop but it needs 
+    //to be updated for each while loop so initialize it out here so it's not reset each while loop 
+    while (n > 0){
+        let digit = n % 10; //isolates the last number 
+        let doubleDigit = (digit * 11) * multiplier; //doubles the number and puts it in the correct place
+        doubles += doubleDigit;
+        multiplier = multiplier * 100;
+    
+        // I can't figure out what multiplier to use - has to calculate some form of 10's places so  * 100 or 1000 or something like that 
+        n = Math.floor(n / 10) // remove last digit 
+    }
+    return doubles
+}
+
+module.exports = { solution };
+
+//example 4: 
