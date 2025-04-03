@@ -22,6 +22,7 @@ tokens.forEach(token => console.log(token));
 // language!
 
 /*We start by declaring a string variable sentence containing the text "JavaScript is an amazing language!". 
+
 On the second line, we use the split method with a space character " " as the delimiter. 
 This method splits the sentence every time it encounters a space and returns an array of substrings or tokens. 
 In this case, the resulting tokens array will contain ["JavaScript", "is", "an", "amazing", "language!"]. 
@@ -104,4 +105,60 @@ console.log("The average is " + average);  // Output: The average is 3.2
 
 /* By integrating these methods, we can transform the string 1,2,3,4,6 into an array of integers, 
 calculate their average, and display the result. */
+
+// --------------------- practice: --------------------------
+
+// example 1: 
+
+/*Modify the given JavaScript code to combine the astronaut's 
+name and year of birth into a single string using array methods instead of using string concatenation with a loop. 
+You should replace the loop inside the join function with the array join method. 
+The aim of the code is to parse the given data in astronautsData into a more readable format.*/ 
+
+function split(s, delimiter) {
+    return s.split(delimiter);
+}
+
+// Modify this function to use array's join method.
+// function join(arr, delimiter) {
+//     // #TODO: Replace the following loop operations with array join method
+//     let joined = "";
+//     for (let i = 0; i < arr.length; i++) {
+//         if (i !== 0) {
+//             joined += delimiter;
+//         }
+//         joined += arr[i];
+//     }
+//     return joined;
+// }
+
+function join(arr, delimiter) {
+    // #TODO: Replace the following loop operations with array join method
+    let joined = arr.join(delimiter); // updated code 
+    return joined;
+}
+
+let astronautsData = "Buzz Aldrin,1930;Yuri Gagarin,1934;Valentina Tereshkova,1937";
+let astronautsList = split(astronautsData, ";");
+let cleanedAstronauts = [];
+
+astronautsList.forEach(function(astronaut) {
+    cleanedAstronauts.push(join(split(astronaut, ","), " "));
+});
+
+cleanedAstronauts.forEach(function(cleanedAstronaut) {
+    console.log(cleanedAstronaut);
+    // Should output:
+    // Buzz Aldrin 1930
+    // Yuri Gagarin 1934
+    // Valentina Tereshkova 1937
+});
+
+//example 2: 
+
+/*Your latest assignment involves debugging a segment of code in the 
+Employee Information Management System for your JavaScript project. 
+There is code designed to neatly present employee data, 
+but it is currently not functioning correctly. 
+Can you identify the error and correct it? */
 
