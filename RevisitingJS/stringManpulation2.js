@@ -162,3 +162,88 @@ There is code designed to neatly present employee data,
 but it is currently not functioning correctly. 
 Can you identify the error and correct it? */
 
+// Employee Information Management System
+
+let employeeData = "Name: John Doe, Age: 30, Role: Engineer";
+
+// Split employee data into an array of strings
+let employeeInfoArray = employeeData.split(",");
+
+let cleanedData = "";
+
+employeeInfoArray.forEach(info => {
+    cleanedData += info + "\n";
+});
+
+console.log(cleanedData);
+
+// Expected Output:
+// Name: John Doe
+// Age: 30
+// Role: Engineer
+
+// this one was super easy, it was splitting at the spaces instead of at the commas 
+//changed line 170 from let employeeInfoArray = employeeData.split(" "); to 
+//let employeeInfoArray = employeeData.split(",");
+
+//example 3: 
+
+/*You have a list of employees, each with their name, job title, and age, all in a single string. 
+Your task is to split and process each employee's information, 
+check if they are under 40 years old, and if so, 
+append a note indicating they're eligible for a junior position. 
+Display the result in a clear and readable format. */
+
+const employeeData2 = "Alice,Developer,30|Bob,Manager,45|Charlie,Designer,25";
+const employeeList = employeeData2.split("|");
+
+employeeList.forEach(employee => {
+    // TODO: Tokenize the employee data and determine eligibility for a junior position
+    let employeeInfo = employee.split(",");
+    let name = employeeInfo[0];
+    let role = employeeInfo[1];
+    let age = parseInt(employeeInfo[2]);
+    let elligible = "";
+    if (age < 40) {
+        elligible = "Elligible";
+    } else if(age > 40) {
+        elligible = "Not Elligible";
+    }
+    console.log(`Name: ${name} - Role: ${role} - Age: ${age} - ${elligible}`)
+
+    // TODO: Display the result in format `Name: <name> - Role: <role> - Age: <age> - <Eligible/Not Eligible>`
+});
+
+//this one was easy 
+
+
+//example 4: 
+
+/* Imagine you are in charge of tracking astronaut missions to various planets. 
+You have a string containing astronaut names and the planets they are exploring. 
+Your task is to write a JavaScript program that processes this string and prints 
+out a summary of each astronaut's mission. */
+
+function processAstronautData(data) {
+    let details = data.split(";");
+    
+    details.forEach(detail => {
+        // TODO: Split the detail into astronaut name and planet,
+        //       and strip away the whitespace.
+        let trimmedDetails = detail.trim();
+        let splitDetails = trimmedDetails.split("-");
+        let name = splitDetails[0];
+        let planet = splitDetails[1];
+        
+        console.log(`Astronaut ${name} is exploring ${planet}.`);
+        
+        // TODO: Print the statement in the format "Astronaut [name] is exploring [planet]."
+    });
+}
+
+let astronautData = "    Neil-Mars; Buzz-Jupiter; Sally-Venus    ";
+processAstronautData(astronautData);
+
+//also fairly straightforward though I am sure there would be a better solution with fewer variables being declared 
+
+// example 5: 
