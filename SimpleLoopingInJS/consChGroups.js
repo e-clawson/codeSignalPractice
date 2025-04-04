@@ -1,0 +1,1 @@
+/* today, we'll learn how to identify consecutive groups of identical characters in a string */
