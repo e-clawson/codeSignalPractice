@@ -207,3 +207,54 @@ module.exports = { solution: encodeRLE };
 //was able to solve with minimal help by following along with the example 
 
 //example 2: 
+
+/* 
+
+Your task is to write a JavaScript function that takes in a string and identifies all the consecutive groups 
+of identical characters within it, with the analysis starting from the end of the string rather than from its beginning. 
+A group is defined as a segment of the text where the same character is repeated consecutively.
+
+Your function should return an array of strings. 
+Each string will consist of the repeating character and the number of its repetitions separated
+by a space. For instance, if the input string is "aaabbcccdde", 
+the function should output: [ "e 1", "d 2", "c 3", "b 2", "a 3" ].
+
+Note that the input string cannot be empty; in other words, 
+it must contain at least one character, and its length must not exceed 500 characters. 
+The return should also be in reverse order, starting from the group of repeated characters 
+at the end of the string and moving backward.
+
+Also note that unlike the previous exercise, 
+this task requires you to consider every character in the string, including symbols.
+
+Put your knowledge and skills into action to solve this reverse pattern identification puzzle!
+*/ 
+
+function solution(s) {
+    // TODO: implement the algorithm to find consecutive groups of characters in the reverse order
+    //step 1 - initialize a variable to store return string, and variables for the current character and the current count 
+    let reverseOrderStringArray = [];
+    let currentCharacter = '';
+    let currentCount = 0;
+    // 
+    for (i=0; i < s.length; i++){
+        let c = s[i]; //initialize a local variable to store the current character 
+        if (c === currentCharacter) { //if the current character is the same as the one saved in current Character, then:
+            currentCount += 1 //increment (add one to) the currentCount 
+        } else {
+            if (currentCharacter != ''){ //if the currentCharacter isn't an empty string, then: 
+                reverseOrderStringArray.unshift(currentCharacter + " " + currentCount); //add the current character and count to the beginning of the array (so it's in reverse order)
+            }
+            currentCharacter = c; //update the character
+            currentCount = 1; //update the count 
+        }
+    }
+    if (currentCharacter != '') {
+        reverseOrderStringArray.unshift(currentCharacter + " " + currentCount);
+    }
+    return reverseOrderStringArray;
+}
+
+module.exports.solution = solution;
+
+// did this one completely on my own with no help and only using the previous example 
