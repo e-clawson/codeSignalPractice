@@ -147,7 +147,7 @@ for (let group of result) {
 
 // ---------------------Practice: -----------------------
 
-//example: 
+//example 1: 
 
 /*
 In this task, you are to write a JavaScript function that implements the concept of 
@@ -175,6 +175,35 @@ We assume that the given input string could have up to 500 characters.
 
 function encodeRLE(s) {
     // TODO: implement
+    //step 1: create new string - return at the end 
+    //create variables to store the current character and the current 
+    //character count
+    let newRleString = '';
+    let currentCharacter = '';
+    let currentCharacterCount = 0;
+    //setp 2: check if it is an alphanumeric character 
+    for (let i=0; i< s.length; i++) {
+        let c = s[i] //set a variable to locally store the current character
+        if (/[a-zA-Z0-9]/.test(c)){ //check if the current character is alphanumeric 
+            if (c === currentCharacter){ //check if the current character equals the variable for currentCharacter
+                currentCharacterCount += 1; //if it does, increment currentCharactercount by 1
+            } else { //if current character is not same as currentCharacter 
+                if (currentCharacter !== '') { //if current group character isn't an empty string, add the character and count to newRleString
+                    newRleString += (currentCharacter + currentCharacterCount);
+                }
+                currentCharacter = c; //update the character 
+                currentCharacterCount = 1; //update the count 
+            }
+        }
+    }
+    if (currentCharacter !== '') { // Add the last group if it exists
+        newRleString += (currentCharacter + currentCharacterCount);
+    }
+    return newRleString;
 }
 
 module.exports = { solution: encodeRLE };
+
+//was able to solve with minimal help by following along with the example 
+
+//example 2: 
