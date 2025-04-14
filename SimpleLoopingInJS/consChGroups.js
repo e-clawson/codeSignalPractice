@@ -258,3 +258,86 @@ function solution(s) {
 module.exports.solution = solution;
 
 // did this one completely on my own with no help and only using the previous example 
+
+//example 3: 
+
+/* 
+
+In this task, you are required to write a JavaScript function that takes a string as input 
+ and identifies all consecutive groups of identical pairs of characters within it. 
+ A group can be defined as a segment of the text where the same pair of characters 
+ is repeated consecutively.
+
+Your function should return a string representing all the repeating character pairs 
+ and the number of their repetitions. 
+ For instance, if the input string is "aaabbabbababaca", 
+ your function should output: "aa1ab1ba1bb1ab2ac1a1". 
+ Note that if the length of the input string is odd, 
+ the last character is not paired with any other and is just added to the resulting string 
+ with repetition count 1.
+
+The length of the string will not exceed 500 characters.
+
+Can you develop such a program? Get set, go!
+
+*/ 
+
+function solution(s) {
+    // TODO: Implement the function here
+    //step 1 - initialize a variable to hold final return of repeating character pairs (string), as well as current pair and current pair count 
+    let repeatingCharacterPairs = '';
+    let currentPair = ''; 
+    let currentPairCount = 0;
+    
+    //create a loop to go through sets of 2 (increment by 2?)
+    for (i=0; i<s.length; i+2){ 
+        let pair = s[i] + s[i+1]; //initialize local variable to keep track of the pairs 
+        if (pair === currentPair) { //check if the pair is strictly equal to currentPair. if it is - 
+            currentPairCount += 1; //increment currentPairCount by 1
+        } else {
+            if (currentPair != ''){ //if currentPair isn't an empty string
+                repeatingCharacterPairs += currentPair + currentPairCount; //add currentPair and currentPairCount to the repeatingCharacterPairs string 
+            }
+            currentPair = pair; //reset currentPair 
+            currentPairCount = 1; //reset currentPairCount
+        }
+    }
+    if (currentPair != ''){
+        repeatingCharacterPairs += currentPair + currentPairCount;
+    }
+    return repeatingCharacterPairs;
+}
+
+module.exports = { solution };
+// this was my original solution but it doesnt increment properly, so I had to change it 
+//from i+2 to i+=2, and also use s.substring(i, Math.min(i + 2, s.length)) for pair 
+
+//final correct solution: 
+
+function solution(s) {
+    // TODO: Implement the function here
+    //step 1 - initialize a variable to hold final return of repeating character pairs (string), as well as current pair and current pair count 
+    let repeatingCharacterPairs = '';
+    let currentPair = ''; 
+    let currentPairCount = 0;
+    
+    //create a loop to go through sets of 2 (increment by 2?)
+    for (i=0; i<s.length; i += 2){ 
+        let pair = s.substring(i, Math.min(i + 2, s.length)); //initialize local variable to keep track of the pairs 
+        if (pair === currentPair) { //check if the pair is strictly equal to currentPair. if it is - 
+            currentPairCount += 1; //increment currentPairCount by 1
+        } else {
+            if (currentPair != ''){ //if currentPair isn't an empty string
+                repeatingCharacterPairs += currentPair + currentPairCount; //add currentPair and currentPairCount to the repeatingCharacterPairs string 
+            }
+            currentPair = pair; //reset currentPair 
+            currentPairCount = 1; //reset currentPairCount
+        }
+    }
+    if (currentPair != ''){
+        repeatingCharacterPairs += currentPair + currentPairCount;
+    }
+    return repeatingCharacterPairs;
+}
+
+module.exports = { solution };
