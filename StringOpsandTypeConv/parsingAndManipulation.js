@@ -176,3 +176,34 @@ Example:
 For timePoints = ['10:00:00', '23:30:00'] and addedSeconds = 3600, 
 the output should be ['11:00:00', '00:30:00'].
 */
+
+function addSecondsToTimes(timePoints, addedSeconds) {
+    // TODO: implement the function
+    let newTimes = [];
+    // step 1 - parse the input time - split at 
+    
+    for (i=0; i < timePoints.length; i++){
+      let timeparts = timePoints[i].split(":"); 
+      let hours = parseInt(timeparts[0]);
+      let minutes = parseInt(timeparts[1]);
+      let seconds = parseInt(timeparts[2]);
+      
+      let secondsSinceStart = hours * 3600 + minutes * 60 + seconds; //cumulative number of seconds
+      
+      let totalSeconds = (secondsSinceStart + addedSeconds) % (24 * 3600);
+      
+      let newHours = Math.floor(totalSeconds / 3600); 
+      totalSeconds%= 3600;
+      let newMinutes = Math.floor(totalSeconds / 60);
+      let newSeconds = totalSeconds % 60
+      
+      let result = `${String(newHours).padStart(2, '0')}:${String(newMinutes).padStart(2, '0')}:${String(newSeconds).padStart(2, '0')}`
+      newTimes.push(result);
+    }
+    
+    return newTimes
+  }
+  
+  module.exports = { addSecondsToTimes };
+
+  
