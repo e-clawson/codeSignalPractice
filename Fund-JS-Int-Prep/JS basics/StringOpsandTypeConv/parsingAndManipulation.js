@@ -281,3 +281,90 @@ function timePeriodLength(timePeriod) {
   module.exports = { solution: timePeriodLength };
 
 //example 3: 
+
+/*
+You are given an initial date as a string in the format YYYY-MM-DD, 
+along with an integer n which represents a number of days. 
+Your task is to calculate the date after adding the given number 
+of days to the initial date and return the result in the YYYY-MM-DD format.
+
+Keep these points in mind when resolving the task:
+
+The initial date string is always valid, formatted as YYYY-MM-DD, 
+where YYYY denotes the year, MM the month, and DD the day.
+The given integer n is the number of days you have to add to 
+the initial date and will be up to 50,000
+
+The output should be a string showcasing the final date after adding n days, 
+in the YYYY-MM-DD format.Your function will be in the form function addDays(date, n).
+Note that as a helper data we provide the number of days in each month in the DAYS_IN_MONTH array.
+
+Constraints
+
+- date = the date string in the YYYY-MM-DD format. 
+The year YYYY will be from 1900 to 2100, inclusive. 
+The month MM and the day DD will be valid for the given year.
+
+- n = the integer representing the number of days you have to add to the initial date.
+n ranges from 1 to 50,000 inclusive.
+
+- You should consider leap years in the calculation. 
+A year is a leap year if it is divisible by 4, 
+but century years (years divisible by 100) are not leap years unless they are divisible by 400. 
+This means that the year 2000 was a leap year, although 1900 was not.
+
+- The month and day result should always be two digits long, 
+padding with a 0 if necessary. 
+For example, July 9th should be formatted as "07-09".
+
+Example
+
+For date = '1999-01-01' and n = 365, the output should be '2000-01-01'.
+*/
+const DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+function addDays(date, n) {
+    // TODO: Implement
+    //get the whole thing into days? 
+    //add the days? 
+    // revert it back to date format? 
+    let [year, month, day] = date.split('-').map(Number);
+    
+    function daysInMonth(year, month){
+        if (month === 2 && isLeapYear(year)) {
+            return 29;
+        }
+        return DAYS_IN_MONTH[month - 1]; 
+    }
+    
+    function isLeapYear(year) {
+        if (year % 4 != 0){
+            return false;
+        } if (year % 100 === 0 && year % 400 != 0) {
+            return false;
+        } else {
+            return true; 
+        }
+    }
+    
+    while (n > 0) {
+        const daysInCurrentMonth = daysInMonth(year, month);
+        if (n + day <= daysInCurrentMonth) {
+            day += n;
+            n = 0;
+        } else {
+            n -= (daysInCurrentMonth - day + 1); 
+            day = 1; 
+            if (month === 12) {
+                month = 1; 
+                year++; 
+            } else {
+                month++
+            }
+        }
+    }
+
+return `${year.toString().padStart(4, '0')}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;   
+}
+
+module.exports = { addDays };
