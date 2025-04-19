@@ -235,4 +235,54 @@ function findGreaterPairs(arrayA, arrayB) {
 }
 
 module.exports = { solution: findGreaterPairs };
+
 //example 3: 
+
+/*You will be given two arrays of integers. The first array has n elements, 
+and the second array has k elements. Sizes n and k both range from 1 to 100, 
+inclusive. The elements of both arrays can fall within a range of -100 to 100, inclusive.
+
+Your task is to write a JavaScript function that will locate and return an array 
+of all pairs of integers with the property that the first element of each pair 
+comes from the first array and the second element of each pair comes from the second array,
+such that the sum of the two elements of the pair is a perfect square. 
+ 
+A perfect square, as you know, is an integer that is the square of another integer.
+
+The order of pairs in your output should be such that pairs with the first element appearing earlier in arr1 
+come before pairs with the first element appearing later in arr1. 
+If multiple pairs have the same first element from arr1, 
+they should be ordered based on the order of the second element in arr2. 
+
+If no such pairs exist, or if either input array is empty, your function should return an empty array.
+
+For example, if the two arrays are [2, 3, 16] and [1, 9, 10], the function should return [[3, 1], [16, 9]] 
+because 3+1=4 (which is the square of 2) and 16+9=25 (which is the square of 5).
+*/ 
+
+function findPerfectSquarePairs(arr1, arr2) {
+    // TODO: Implement this function
+    
+    // return an array of all pairs of integers where num1 + num2 = perfect square (will need to use remainders %? )
+    //similar to last one 
+    //step 1- iterate through arr1, for each integer in arr1, 
+    //step 2 - loop through arr 2, 
+    //step 3 - if the sum of those numbers is a perfect square, push it to a new array
+    //return the new array
+    let perfectSquareArray = [];
+    let perfectSquarePair = [];
+    
+    for (i=0; i < arr1.length; i++) {
+        let num1 = arr1[i];
+        for (j=0; j < arr2.length; j++) {
+            let num2 = arr2[j]
+            let root = Math.sqrt(num1+num2); 
+            if (Number.isInteger(root)){
+                perfectSquarePair.push(num1, num2);
+                perfectSquareArray.push(perfectSquarePair);
+            }
+        perfectSquarePair = []
+        }
+    }
+    return perfectSquareArray;
+}
