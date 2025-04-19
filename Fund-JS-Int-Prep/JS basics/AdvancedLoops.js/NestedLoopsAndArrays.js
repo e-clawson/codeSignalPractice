@@ -190,3 +190,49 @@ function stringSearch(sourceArray, searchArray) {
 module.exports = { stringSearch };
 
 //example 2: 
+/*You are given two arrays of unique integers (arrayA and arrayB), each containing n elements, 
+with n ranging from 1 to 500. Each element in both arrays can range from -1000 to 1000, inclusive.
+
+Your task is to write a JavaScript function that identifies pairs of integers {a, b} 
+wherein a belongs to arrayA and b belongs to arrayB, and a is greater than b. 
+The function should return all such pairs in the order in which a appears in arrayA.
+
+For instance, if arrayA consists of {5, 1, 8, -2, 0} and arrayB comprises {3, 2, 7, 10, -1}, 
+the output should be [[5, 3], [5, 2], [5, -1], [1, -1], [8, 3], [8, 2], [8, 7], [8, -1], [0, -1]].
+
+A pair cannot be included more than once. If no pair meets the condition, the function should return an empty list.
+
+Hint: Solving this task requires the use of nested loops. The outer loop should iterate through arrayA and the inner loop through arrayB, checking the condition a > b during each iteration.
+*/
+
+function findGreaterPairs(arrayA, arrayB) {
+    // TODO: Find the pairs of integers a, b where a belongs to arrayA and b belongs to arrayB such that a is greater than b
+    let newArray = [];
+    let greaterThanPair = [];
+    //loop through array a, and check each number against each number in array b 
+    // if arrANum is > arrBNum, then push them to the new array as a pair 
+    //reminder we want an array of nested arrays 
+    
+    //step 1 - for loop looping through arrayA, isolating each number
+    //step 2 - nested for loop looping through array b, comparing each int to the Arr a int 
+    //set 3 - if numA > numB, store in an array (store in a var that is an empty array?), and push that array to newArray 
+    //step 4 - return newArray X 
+    
+    for (i=0; i < arrayA.length; i++) {
+        let numA = arrayA[i]; 
+        for (j=0; j < arrayB.length; j++) {
+            let numB = arrayB[j];
+            if(numA > numB) {
+                greaterThanPair.push(numA, numB);
+                newArray.push(greaterThanPair)
+            }
+        greaterThanPair = [];
+        }
+    }
+    
+    // Your code goes here
+    return newArray;
+}
+
+module.exports = { solution: findGreaterPairs };
+//example 3: 
