@@ -135,3 +135,42 @@ function countMin(numbers) {
 }
 
 //problem 4: 
+
+//You are given an array of integers. 
+// Your task is to write a JavaScript function to find the second-largest number among these integers. 
+// If the array has fewer than two unique numbers, return null.
+
+//You are not allowed to use any built-in JavaScript functions or methods such as Math.max(), 
+// sort(), or reduce(). Instead, you should implement the task using basic array operations.
+
+// need to find the largest integer 
+// need to setup a variable for lergest integer and set it to arr[i]
+// then need to loop and compare that to the others - if something is larger, make it the new 
+// largest int 
+// also need to save previous int, and if current int is smaller than largest int, but bigger than 
+// previous int, make it second largest int 
+
+function secondMax(nums) {
+    // TODO: Find the second largest number in nums
+    let maxInt = nums[0];
+    let secondMaxInt = -Infinity;
+    
+    for (let i=0; i<nums.length; i++){
+        let currentInt = nums[i];
+        
+        if (currentInt > maxInt){ 
+            secondMaxInt = maxInt;
+            maxInt = currentInt;
+        } else if (currentInt < maxInt && currentInt > secondMaxInt){
+            secondMaxInt = currentInt;
+        } 
+    }
+    
+    if (secondMaxInt === -Infinity) {
+        return null;
+    } else {
+        return secondMaxInt;
+    }
+}
+
+// module.exports = { secondMax };
