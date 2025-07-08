@@ -41,4 +41,27 @@ console.log(findMaxElement(sampleArray));  // Output: 9
 // =========== Practice ============
 
 // example 1: 
- 
+
+//You are given an array of integers. Your task is to write a function findMin(arr) 
+//that returns the minimum number from the array without using JavaScript's built-in Math.min() function.
+//If the array is empty, your function should return null.
+
+function findMin(arr) {
+    // TODO: implement the function to find the minimum number from an array
+    let currentMin = arr[0];
+    
+    if (arr.length === 0) {
+        return null;
+        }
+    
+    for (let i = 0; i < arr.length; i++) {
+        currentNum = arr[i]; 
+        if (currentNum < currentMin) {
+            currentMin = currentNum;
+        }
+    }
+    return currentMin;
+}
+
+// module.exports = { findMin }; 
+// got the whole for loop on my own, got help for the arr.length portion
