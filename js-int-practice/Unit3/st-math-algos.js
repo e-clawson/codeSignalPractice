@@ -43,4 +43,26 @@ console.log(isPrime(11)); // Outputs: true
 
 //========== Practice Problems ============== 
 
-//Problem 1: 
+//Problem 1 - perfect square: 
+
+//You are given an integer number n. 
+// The task is to determine if this number is a perfect square or not. 
+// A perfect square is a number that can be expressed as the product of an integer with itself.
+// For example, 1 = 1 * 1, 4 = 2 * 2, 9 = 3 * 3, and 16 = 4 * 4 are perfect squares, but 2, 3, 5, and 6 are not.
+
+//Implement a function isPerfectSquare(n) that returns true if the given number n is a perfect square and false otherwise.
+
+function isPerfectSquare(n) {
+    // TODO: implement the function that checks if a number is a perfect square
+     
+        if (Math.sqrt(n) === Math.floor(Math.sqrt(n))) {
+            return true;
+        } else {
+            return false;
+        }
+
+}
+
+module.exports = { isPerfectSquare };
+
+//example 2 - find the next prime 
