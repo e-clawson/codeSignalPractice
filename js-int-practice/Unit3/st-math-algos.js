@@ -101,3 +101,41 @@ function isPrime(candidate) {
 module.exports = { nextPrime };
 
 //problem 3 - 
+//You are provided with two integers, a and b. 
+// Your task is to write a JavaScript function that checks whether both a and b are co-prime or not. 
+// Two numbers are said to be co-prime or mutually prime if the only positive integer that divides both of them is 1. 
+// The expected complexity is O(max(a,b))
+
+//For example:
+console.log(areCoprime(15, 28));   // Output: true
+console.log(areCoprime(12, 18));   // Output: false
+//In the first example, the only positive integer that divides both 15 and 28 is 1; hence, they are co-prime. However, in the second example, 12 and 18 are divisible by 2 and 3; thus, they are not co-prime.
+
+function areCoprime(a, b) {
+    // TODO: implement
+    
+   function gcd(a, b) {
+        // Find Minimum of a and b
+        let result = Math.min(a, b);
+
+        while (result > 0) {
+            if (a % result === 0 && b % result === 0) {
+                break;
+            }
+            result--;
+        }
+
+        // Return gcd of a and b
+        if(result === 1){ 
+            return true;
+        } else {
+            return false;
+        }
+    }
+    let finalResult = gcd(a,b);
+    
+    return finalResult;
+    
+}
+
+module.exports = { areCoprime };
