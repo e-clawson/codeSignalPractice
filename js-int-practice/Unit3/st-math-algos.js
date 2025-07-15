@@ -139,3 +139,23 @@ function areCoprime(a, b) {
 }
 
 module.exports = { areCoprime };
+//works but doesn't use euclidean algo
+
+//this one uses the algo 
+function areCoprime(a, b) {
+    // TODO: implement
+    
+   function gcd(a, b) {
+        if (b == 0) {
+            return a; 
+        } else {
+            return gcd(b, a % b);
+        }
+    }
+    
+   if (gcd(a, b) === 1) {
+        return true;
+        } else {
+            return false;
+        }
+}
