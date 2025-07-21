@@ -179,6 +179,7 @@ function areCoprime(a, b) {
 function nthPrime(n) {
     // TODO: implement the function
     let foundPrimes = 0; 
+
     
     for (let i=0; foundPrimes < n; i++) {
         let currentNumber = i; 
@@ -202,4 +203,31 @@ function nthPrime(n) {
     }
     
 return thePrime; 
+}
+
+//Probelm 5 
+
+//Your task is to create a JavaScript function called getPrimeFactors(n) that will return all unique prime factors of an integer n in an array. A prime factor of n is a prime number that divides n without leaving a remainder. The expected complexity is 
+// O(n)O( n). O(sqrt(n))
+
+//Note that returned prime factors should be unique and sorted in ascending order in the resulting array.
+
+function getPrimeFactors(n) {
+    // TODO: Implement the function that returns all unique prime factors of n
+    let primeFactors = []; 
+    
+    for (i=2; i <= Math.sqrt(n); i++){ 
+        if (n % i === 0) {
+            primeFactors.push(i); 
+            while (n % i === 0) {
+                n = n / i
+            }
+        } 
+    }
+    
+    if (n > 1 ) {
+        primeFactors.push(n);
+    }
+    
+    return primeFactors; 
 }
