@@ -159,3 +159,47 @@ function areCoprime(a, b) {
             return false;
         }
 }
+
+//problem 4 
+
+// You are given a number n. 
+// Your task is to write a function that will return the n-th prime number. 
+// The expected complexity is O(n(srqrt)n) 
+
+// For example, if n is 1, the function should return 2. 
+// If n is 3, the function should return the third prime number, which is 5.
+
+//For example:
+
+//If n = 4, your function should return 7, because the first four primes are 2, 3, 5, 7.
+//If n = 6, it should return 13, since the sixth prime is 13.
+
+//need to check if a number is prime 
+
+function nthPrime(n) {
+    // TODO: implement the function
+    let foundPrimes = 0; 
+    
+    for (let i=0; foundPrimes < n; i++) {
+        let currentNumber = i; 
+        let prime = isPrime(currentNumber); 
+        
+        if (prime){
+            thePrime = currentNumber; 
+            foundPrimes ++
+        }
+    }
+    
+    function isPrime(n) {
+        if (n <=1) {
+            return false
+        } for (let i=2; i <= Math.sqrt(n); i++) {
+            if (n % i === 0) {
+                return false; 
+            }
+        }
+    return true; 
+    }
+    
+return thePrime; 
+}
