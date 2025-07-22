@@ -44,3 +44,29 @@ return finalValue
 }
 
 //example 2: 
+
+//You are given an array of n integers. 
+// Your task is to return the number of unique elements in the array — an element is unique if it appears only once in the array. 
+// You cannot use any built-in JavaScript functions to achieve this.
+
+//For example, countUniqueElements([1, 2, 3, 2, 4]) = 3, 
+// as there are three unique elements in the list - 1, 3, and 4.
+
+function countUniqueElements(arr) {
+    // TODO: Implement the function that counts unique elements in the given array.
+    let uniqueElements = 0; 
+    
+    for (i=0; i < arr.length; i++){ 
+        currentNumCount = 0;
+        for (j=0; j< arr.length; j++){
+            if (arr[i] === arr[j]) {
+                currentNumCount++; 
+            }
+        }
+        if (currentNumCount === 1) {
+            uniqueElements++; 
+        }
+    }
+    
+    return uniqueElements;
+}
