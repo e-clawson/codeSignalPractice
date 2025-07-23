@@ -70,3 +70,23 @@ function countUniqueElements(arr) {
     
     return uniqueElements;
 }
+
+//problem 3: 
+
+//You are given an array of n integers. 
+//The goal of this task is to return the reversed array of integers 
+//without using any built-in JavaScript functions or methods related to reversing an array.
+
+function reverseArray(arr) {
+    // TODO: Implement the function that reverses an array of numbers.
+    let reversedArray = []; 
+    
+    for (i=arr.length - 1; i >= 0; i--) {
+        reversedArray.push(arr[i]);
+    }
+    
+return reversedArray;
+}
+//surprisingly easy! yayyyy
+
+//problem 4 
